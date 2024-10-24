@@ -1,30 +1,44 @@
-# Electronjs Boilerplate with React + TypeScript + Vite
+# Cross-Platform System Monitor
 
-A boilerplate allowing you to quickly start working with Electron.js, React, TypeScript, and Vite. This template includes minimal configurations to run a React app in Vite, with Hot Module Replacement (HMR) support and ESLint.
+## Overview
 
-## Technologies used in the project
+This open-source application retrieves system information and real-time metrics about a user's hardware, including:
 
-- [Electron.js](https://www.electronjs.org/)
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)
-- [ESLint](https://eslint.org/)
-- [Babel](https://babeljs.io/) or [SWC](https://swc.rs/) (depending on the configuration)
+- **CPU Model**
+- **Total RAM**
+- **Total Storage Capacity**
+- **Real-time Data:**
+  - CPU Temperature
+  - CPU Usage
+  - RAM Usage
+  - Storage Usage
 
-## Installation Instructions
+It is built using **Electron.js** for cross-platform desktop application support, **React** for the front-end, and **TypeScript** for type safety. The project also uses **Vite** for fast builds and hot module replacement (HMR).
+
+The application is currently in the development phase, and the features and interface are subject to change.
+
+## Technologies
+
+- **Electron.js**
+- **React**
+- **TypeScript**
+- **Vite**
+- **ESLint** for linting
+
+## Installation
 
 To run the project locally, follow these steps:
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Malzagic/Electronjs-boilerplate-with-react-ts-vite.git
+   git clone https://github.com/Malzagic/system-monitor-electron-react.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd Electronjs-boilerplate-with-react-ts-vite
+   cd system-monitor-electron-react
    ```
 
 3. Install dependencies:
@@ -33,81 +47,82 @@ To run the project locally, follow these steps:
    npm install
    ```
 
-4. Build the React application:
-
+4. Run the application in development mode:
    ```bash
-   npm run build
+   npm run dev
    ```
 
-   This command will create the `dist-react` folder containing the built React app.
+This command will handle building and running the React application with Vite and HMR. It will also transpile the Electron code (if needed) and start Electron in development mode.
 
-5. Transpile the Electron code:
+## Vite Note
 
-   ```bash
-   npm run transpile:electron
-   ```
+This setup uses Vite for fast builds and hot module replacement (HMR). The current configuration uses **Babel** or **SWC** depending on the project needs.
 
-   This command will create the `dist-electron` folder with the transpiled Electron code.
+## Expanding the ESLint Configuration
 
-6. Run the application in development mode:
+For a production application, consider extending the ESLint configuration for stricter type checks. Here's how:
 
-   ```bash
-   npm run dev:electron
-   ```
+### Type-Aware ESLint Configuration
 
-   The application will start in development mode with HMR enabled for React.
+Update your top-level `parserOptions` in ESLint:
 
-## Vite Note:
+```js
+export default tseslint.config({
+  languageOptions: {
+    parserOptions: {
+      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+});
+```
 
-This template provides a minimal setup to get React working with TypeScript in Vite, along with HMR and some ESLint rules. Currently, two official plugins are available:
+Replace the default configuration with stricter options:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh.
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh.
+```js
+tseslint.configs.recommendedTypeChecked;
+// or
+tseslint.configs.strictTypeChecked;
+```
 
-### Expanding the ESLint configuration
+Optionally, add:
 
-If you are developing a production application, it's recommended to update the ESLint configuration to enable type-aware rules:
+```js
+...tseslint.configs.stylisticTypeChecked
+```
 
-1. Configure the top-level `parserOptions` property as follows:
+### React-Specific ESLint Configuration
 
-   ```js
-   export default tseslint.config({
-     languageOptions: {
-       // other options...
-       parserOptions: {
-         project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-         tsconfigRootDir: import.meta.dirname,
-       },
-     },
-   });
-   ```
+Install the `eslint-plugin-react` and update your ESLint configuration:
 
-2. Replace `tseslint.configs.recommended` with `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`.
+```bash
+npm install eslint-plugin-react
+```
 
-3. Optionally, add `...tseslint.configs.stylisticTypeChecked`.
+```js
+// eslint.config.js
+import react from "eslint-plugin-react";
 
-4. Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the configuration:
-
-   ```js
-   // eslint.config.js
-   import react from "eslint-plugin-react";
-
-   export default tseslint.config({
-     // Set the React version
-     settings: { react: { version: "18.3" } },
-     plugins: {
-       // Add the React plugin
-       react,
-     },
-     rules: {
-       // other rules...
-       // Enable its recommended rules
-       ...react.configs.recommended.rules,
-       ...react.configs["jsx-runtime"].rules,
-     },
-   });
-   ```
+export default tseslint.config({
+  settings: {
+    react: {
+      version: "18.3",
+    },
+  },
+  plugins: {
+    react,
+  },
+  rules: {
+    ...react.configs.recommended.rules,
+    ...react.configs["jsx-runtime"].rules,
+  },
+});
+```
 
 ## License
 
 This project is licensed under the MIT License.
+
+## Future Development
+
+The project is actively being developed. Both the user interface and available features may change over time.
