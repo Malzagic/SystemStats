@@ -6,7 +6,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Text,
 } from "recharts";
 
 type BaseChartProps = {

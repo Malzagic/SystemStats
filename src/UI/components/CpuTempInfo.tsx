@@ -9,6 +9,8 @@ export default function CpuTempInfo() {
     [statistics]
   );
 
+  if (!cpuTemps) return <div>Loading...</div>;
+
   return (
     <div className="container">
       <h1 className="title">CPU Temp</h1>

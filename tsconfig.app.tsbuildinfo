@@ -1,1 +1,1 @@
-{"root":["./src/ui/app.tsx","./src/ui/main.tsx","./src/ui/vite-env.d.ts"],"version":"5.6.3"}
+{"root":["./src/ui/app.tsx","./src/ui/main.tsx","./src/ui/vite-env.d.ts","./src/ui/components/basechart.tsx","./src/ui/components/chart.tsx","./src/ui/components/cputempinfo.tsx","./src/ui/components/systeminfostats.tsx","./src/ui/context/systeminfocontext.tsx","./src/ui/hook/usestatistics.ts"],"version":"5.6.3"}

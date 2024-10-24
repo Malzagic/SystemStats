@@ -24,6 +24,8 @@ function App() {
     [statistics]
   );
 
+  if (!cpuUsages || !ramUsages || !storageUsages) return <div>Loading...</div>;
+
   return (
     <SystemInfoProvider>
       <SystemInfoStats />

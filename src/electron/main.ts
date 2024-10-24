@@ -28,7 +28,7 @@ app.on("ready", () => {
     return getStaticData();
   });
 
-  createTray(mainWindow);
+  // createTray(mainWindow);
   handleCloseEvent(mainWindow);
   createMenu(mainWindow);
 });
