@@ -8,7 +8,7 @@ import { createMenu } from "./menu.js";
 app.on("ready", () => {
   const mainWindow = new BrowserWindow({
     width: 400,
-    height: 400,
+    height: 600,
     maxWidth: 800,
     maxHeight: 800,
     webPreferences: {

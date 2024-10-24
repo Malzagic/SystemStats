@@ -18,6 +18,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  height: 100vh;
+}
+
 h1 {
   font-size: 1rem;
 }

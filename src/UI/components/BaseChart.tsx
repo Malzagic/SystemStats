@@ -17,7 +17,7 @@ type BaseChartProps = {
 export function BaseChart({ data, title }: BaseChartProps) {
   return (
     <>
-      <Text
+      {/* <Text
         x={0}
         y={20}
         width={500}
@@ -26,7 +26,17 @@ export function BaseChart({ data, title }: BaseChartProps) {
         style={{ fontSize: "12px", fontWeight: "bold", textAlign: "center" }}
       >
         {title}
-      </Text>
+      </Text> */}
+      <h3
+        style={{
+          fontSize: "12px",
+          fontWeight: "bold",
+          textAlign: "center",
+          margin: "10px 0",
+        }}
+      >
+        {title}
+      </h3>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data}>
           <CartesianGrid stroke="#333" strokeDasharray="3 3" fill="#1C1C1C" />
