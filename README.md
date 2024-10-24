@@ -32,13 +32,13 @@ To run the project locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Malzagic/system-monitor-electron-react.git
+   git clone https://github.com/Malzagic/SystemStats.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd system-monitor-electron-react
+   cd SystemStats
    ```
 
 3. Install dependencies:
