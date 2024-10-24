@@ -23,7 +23,7 @@ export function BaseChart({ data, title }: BaseChartProps) {
         width={500}
         textAnchor="middle"
         dominantBaseline="hanging"
-        style={{ fontSize: "18px", fontWeight: "bold", textAlign: "center" }}
+        style={{ fontSize: "12px", fontWeight: "bold", textAlign: "center" }}
       >
         {title}
       </Text>
@@ -40,8 +40,13 @@ export function BaseChart({ data, title }: BaseChartProps) {
             isAnimationActive={false}
           />
           <XAxis dataKey="value" stroke="transparent" height={0} />
-          <YAxis domain={[0, 100]} stroke="#5DD4EE" width={50} />
-          <Tooltip />
+          <YAxis
+            domain={[0, 100]}
+            stroke="#5DD4EE"
+            width={50}
+            tickFormatter={(tick) => `${tick}%`}
+          />
+          <Tooltip formatter={(value) => `${value}%`} />
         </AreaChart>
       </ResponsiveContainer>
     </>

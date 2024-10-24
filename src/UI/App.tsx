@@ -1,9 +1,12 @@
 import { useMemo } from "react";
-import { useStatistics } from "./useStatistics";
+import { useStatistics } from "./hook/useStatistics";
+import { SystemInfoProvider } from "./context/SystemInfoContext";
 
-import { Chart } from "./Chart";
+import { Chart } from "./components/Chart";
 
 import "./App.css";
+import SystemInfoStats from "./components/SystemInfoStats";
+import CpuTempInfo from "./components/CpuTempInfo";
 
 function App() {
   const statistics = useStatistics(10);
@@ -16,16 +19,31 @@ function App() {
     () => statistics.map((stats) => stats.ramUsage),
     [statistics]
   );
+  const storageUsages = useMemo(
+    () => statistics.map((stats) => stats.storageUsage),
+    [statistics]
+  );
 
   return (
-    <div className="chart-container">
-      <div style={{ height: 120 }}>
-        <Chart data={cpuUsages} maxDataPoints={10} title="CPU Usage" />
+    <SystemInfoProvider>
+      <SystemInfoStats />
+      <CpuTempInfo />
+      <div className="chartWrapper">
+        <div className="chartContainer">
+          <Chart data={cpuUsages} maxDataPoints={10} title="CPU Usage" />
+        </div>
+        <div className="chartContainer">
+          <Chart data={ramUsages} maxDataPoints={10} title="RAM Usage" />
+        </div>
+        <div className="chartContainer">
+          <Chart
+            data={storageUsages}
+            maxDataPoints={10}
+            title="Storage Usage"
+          />
+        </div>
       </div>
-      <div style={{ height: 120, paddingTop: "3rem" }}>
-        <Chart data={ramUsages} maxDataPoints={10} title="RAM Usage" />
-      </div>
-    </div>
+    </SystemInfoProvider>
   );
 }
 

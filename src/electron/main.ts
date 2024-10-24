@@ -7,6 +7,10 @@ import { createMenu } from "./menu.js";
 
 app.on("ready", () => {
   const mainWindow = new BrowserWindow({
+    width: 400,
+    height: 400,
+    maxWidth: 800,
+    maxHeight: 800,
     webPreferences: {
       preload: getPreloadPath(),
     },
